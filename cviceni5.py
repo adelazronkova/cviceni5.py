@@ -1,13 +1,30 @@
 import sys
 
 def inkrementuj_cisla(data):
-    pass
+    nova_data = []
+    for radel in data:
+        rozdeleny = radek.split(",")
+        novy_radek = []
+        for prvek in rozdeleny:
+            try:
+                prvek = str(int(prvek) + 1)
+            except ValueError:
+                pass
+            novy_radek.append(prvek)
+        nova_data.append(",".join(novy_radek))
+    return nova_data
 
 def nacti_radky(file_name):
-    pass
+    radky = []
+    with open(file_name, "r") as file:
+        for line in file:
+            radky.append(line.strip())
+    return radky
 
 def zapis_radky(file_name, data):
-    pass
+    with open(file_name, "W") as file:
+        for line in data:
+            file.write(line + "\n")
 
 if __name__ == "__main__":
 
@@ -23,10 +40,9 @@ if __name__ == "__main__":
     except FileNotFoundError:
         print(f'Soubor {file_name} neexistuje')
         
-    data = inkrementuj_cisla(data)
+    #data = inkrementuj_cisla(data)
 
     name = file_name.split('.')  #  name = ['data', 'csv']
 
     file_name2 = name[0] + '2.' + name[1]  #  'data2.txt'
     zapis_radky(file_name2, data)
-
